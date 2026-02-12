@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Be My Valentine?</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: white;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: clamp(28px, 5vw, 48px);
+        font-weight: bold;
+        margin-bottom: 40px;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 20px;
+        position: relative;
+    }
+
+    button {
+        padding: 15px 40px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    #yesBtn {
+        background-color: #ff4d6d;
+        color: white;
+    }
+
+    #noBtn {
+        background-color: #ccc;
+        color: black;
+        position: absolute;
+    }
+
+    button:active {
+        transform: scale(0.95);
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Yasmin, will you be my Valentine?</h1>
+
+<div class="buttons">
+    <button id="yesBtn" onclick="goToSuccess()">Yes</button>
+    <button id="noBtn">No</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+let buttonWidth = 120;
+let buttonHeight = 50;
+
+function moveButton(event) {
+    const rect = noBtn.getBoundingClientRect();
+    const mouseX = event.clientX || (event.touches && event.touches[0].clientX);
+    const mouseY = event.clientY || (event.touches && event.touches[0].clientY);
+
+    const distance = Math.hypot(
+        mouseX - (rect.left + rect.width / 2),
+        mouseY - (rect.top + rect.height / 2)
+    );
+
+    if (distance < 120) {
+        const maxX = window.innerWidth - rect.width;
+        const maxY = window.innerHeight - rect.height;
+
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        const speedFactor = Math.max(0.3, distance / 120);
+        noBtn.style.transition = `all ${speedFactor}s ease-out`;
+
+        noBtn.style.left = randomX + "px";
+        noBtn.style.top = randomY + "px";
+    }
+}
+
+document.addEventListener("mousemove", moveButton);
+document.addEventListener("touchstart", moveButton);
+
+function goToSuccess() {
+    window.location.href = "success.html";
+}
+</script>
+
+</body>
+</html>
