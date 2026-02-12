@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.cover {
+    background: url('images/cover.jpg') center/cover no-repeat;
+    height: 100vh;
+}
+
+.year-page {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    top: 0;
+    left: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: normal;
+}
+
+p {
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    background: #ff4d6d;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ff1e4d;
+}
+
+@media (max-width:768px){
+    h1 { font-size: 32px; }
+    p { font-size: 16px; }
+}
